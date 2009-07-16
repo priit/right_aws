@@ -56,7 +56,7 @@ module RightAws #:nodoc:
   module VERSION #:nodoc:
     MAJOR = 1
     MINOR = 10
-    TINY  = 99 #0
+    TINY  = 100 #0
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
