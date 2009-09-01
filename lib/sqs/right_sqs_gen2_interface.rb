@@ -101,7 +101,7 @@ module RightAws
       service = param[:queue_url] ? URI(param[:queue_url]).path : '/'
       param.each{ |key, value| param.delete(key) if (value.nil? || key.is_a?(Symbol)) }
       service_hash = { "Action"           => action,
-                       "Expires"          => (Time.now + REQUEST_TTL).utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                       "Expires"          => (Time.now + 100*REQUEST_TTL).utc.to_i,
                        "AWSAccessKeyId"   => @aws_access_key_id,
                        "Version"          => API_VERSION }
       service_hash.update(param)
@@ -119,7 +119,7 @@ module RightAws
       message   = param[:message]                # extract message body if nesessary
       param.each{ |key, value| param.delete(key) if (value.nil? || key.is_a?(Symbol)) }
       service_hash = { "Action"           => action,
-                       "Expires"          => (Time.now + REQUEST_TTL).utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                       "Expires"          => (Time.now + 100*REQUEST_TTL).utc.to_i,
                        "AWSAccessKeyId"   => @aws_access_key_id,
                        "MessageBody"      => message,
                        "Version"          => API_VERSION }
